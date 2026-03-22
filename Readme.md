@@ -19,10 +19,14 @@ Use the files Dockerfile and docker-compose.yml in folder ./models to define & s
 ---------- 
 working
 ----------
-initialize podman after installation with
+Assuming the repo is cloned to C:\data\ai\cpp-assistant, initialize podman after installation with
 ```cmd
+cd C:\data\ai\cpp-assistant
 podman init
 podman start
 ```
 
+```cmd
+C:\data\ai\cpp-assistant\models>podman compose up --build -d
+```
 
