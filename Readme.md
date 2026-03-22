@@ -16,3 +16,13 @@ Design Goal:
 ## Create the podman/docker image
 Use the files Dockerfile and docker-compose.yml in folder ./models to define & start the image.
 
+---------- 
+working
+----------
+initialize podman after installation with
+```cmd
+podman init
+podman start
+```
+
+
