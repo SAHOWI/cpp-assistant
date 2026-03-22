@@ -24,8 +24,16 @@ Ensure you have WSL2 installed
 - Install Podman (and Podman Desktop) from podman.io
 - Install podman-compse via
 ```cmd
-pip install podman-compose
+mkdir C:\data\ai\
+git clone git@github.com:SAHOWI/cpp-assistant.git
+python.exe -m venv venv-podman
+venv-podman\Scripts\activate
+(venv-podman) pip install podman-compose
 ```
+REMINDER: You have to execute venv-podman\Scripts\activate again from within C:\data\ai\cpp-assistant after every new start of your cmd shell.
+
+ 
+
 
 
 
