@@ -1,0 +1,15 @@
+services:
+  bitnet-coder:
+    build: .
+    container_name: cpp-assistent
+    volumes:
+      - ./models:/app/models  # subfolder for the models within apps directory
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '4'    # limit to use of 4 cores
+          memory: 4G   # limit memory (RAM) to 4GB
+    tty: true
+    stdin_open: true
