@@ -52,6 +52,10 @@ podman start
 
 ```cmd
 (venv-podman) C:\data\ai\cpp-assistant> cd models
-(venv-podman) C:\data\ai\cpp-assistant> podman compose up --build -d
+(venv-podman) C:\data\ai\cpp-assistant> podman-compose up --build -d
+```
+if your podman-compose failed, fix the issue and restart the build with:
+```cmd
+(venv-podman) C:\data\ai\cpp-assistant> podman-compose up --no-cache --build -d
 ```
 
