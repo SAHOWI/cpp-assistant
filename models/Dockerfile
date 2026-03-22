@@ -1,5 +1,6 @@
 # Make use ob Ubuntu as stable base
 FROM ubuntu:22.04
+FROM python:3.12.2-slim
 
 # make it non-interactive during installation
 ENV DEBIAN_FRONTEND=noninteractive
@@ -25,7 +26,9 @@ RUN pip3 install -r requirements.txt
 
 # Build th eproject
 # Standard build for CPU only, no further optimizations
-RUN python3 setup.py build
+RUN ls -l /app
+# RUN huggingface-cli download microsoft/BitNet-b1.58-2B-4T-gguf --local-dir models/BitNet-b1.58-2B-4T
+# RUN python setup_env.py -md models/BitNet-b1.58-2B-4T -q i2_s
 
 # Default port for API server
 EXPOSE 8080
