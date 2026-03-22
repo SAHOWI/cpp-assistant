@@ -51,6 +51,7 @@ podman start
 ```
 
 ```cmd
-C:\data\ai\cpp-assistant\models>podman compose up --build -d
+(venv-podman) C:\data\ai\cpp-assistant> cd models
+(venv-podman) C:\data\ai\cpp-assistant> podman compose up --build -d
 ```
 
