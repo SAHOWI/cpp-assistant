@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Clone BitNet-Repo form Microsoft (this includes submodules for  llama.cpp)
-RUN git clone --recursive git@github.com:microsoft/BitNet.git .
+RUN git clone --recursive https://github.com/microsoft/BitNet.git .
 
 # install requirements
 RUN pip3 install -r requirements.txt
