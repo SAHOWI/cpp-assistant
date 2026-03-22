@@ -8,9 +8,25 @@ Design Goal:
 - more ???
 
 ## What we need
-- podman (or docker)
-- this document
+- this document :-)
+- python 3.xx (make sure it is up-to-date)
+- podman
+- podman-compose
 - bitnet xx.yy
+- 
+
+## Installation
+### Preparation
+Ensure you have WSL2 installed
+
+### Install packages
+- Install python3 from e.g from Microsoft store
+- Install Podman (and Podman Desktop) from podman.io
+- Install podman-compse via
+```cmd
+pip install podman-compose
+```
+
 
 
 ## Create the podman/docker image
