@@ -1,1 +1,1 @@
-podman build -t cpp-assistant .
+podman build -t cpp-assistant -f Podman.cont .
