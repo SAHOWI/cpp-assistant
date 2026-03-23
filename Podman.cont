@@ -1,0 +1,32 @@
+## File: Podman.cont
+## Usage: 
+## FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
+RUN apt-get update && apt-get install -y \
+    git curl wget ca-certificates \
+    build-essential cmake ninja-build \
+    python3 python3-pip python3-venv \
+    clang-18 lld-18 libopenblas-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-18 100 && \
+    update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-18 100
+
+WORKDIR /opt
+RUN git clone --recursive https://github.com/microsoft/BitNet.git
+
+WORKDIR /opt/BitNet
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+RUN mkdir -p /models /workspace
+
+COPY start-server.sh /usr/local/bin/start-server.sh
+RUN chmod +x /usr/local/bin/start-server.sh
+
+CMD ["/usr/local/bin/start-server.sh"]
