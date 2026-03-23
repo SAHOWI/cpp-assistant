@@ -5,7 +5,7 @@ MODEL_DIR="${MODEL_DIR:-/models/Falcon3-3B-Instruct-1.58bit}"
 QUANT_TYPE="${QUANT_TYPE:-i2_s}"
 HOST="${HOST:-0.0.0.0}"
 PORT="${PORT:-9090}"
-THREADS="${THREADS:-4}"
+THREADS="${THREADS:-8}"
 
 export CC="${CC:-clang}"
 export CXX="${CXX:-clang++}"
@@ -15,8 +15,17 @@ cd /opt/BitNet
 rm -rf build logs
 python setup_env.py -md "${MODEL_DIR}" -q "${QUANT_TYPE}"
 
+MODEL_FILE="${MODEL_DIR}/ggml-model-${QUANT_TYPE}.gguf"
+
+if [ ! -f "${MODEL_FILE}" ]; then
+  echo "Fehler: GGUF-Datei nicht gefunden: ${MODEL_FILE}" >&2
+  echo "Inhalt von ${MODEL_DIR}:" >&2
+  ls -lah "${MODEL_DIR}" >&2 || true
+  exit 1
+fi
+
 exec ./build/bin/llama-server \
-  -m "${MODEL_DIR}" \
+  -m "${MODEL_FILE}" \
   --host "${HOST}" \
   --port "${PORT}" \
   -t "${THREADS}"
