@@ -26,26 +26,44 @@ else {
     throw "Python ist nicht installiert oder nicht im PATH."
 }
 
-Write-Host "Installiere/aktualisiere huggingface_hub mit CLI ..." -ForegroundColor Yellow
-& $PythonCmd -m pip install --upgrade "huggingface_hub[cli]"
+# huggingface_hub installieren/aktualisieren
+& $PythonCmd -m pip install --upgrade huggingface_hub
+
+# prüfen, ob hf im PATH ist
+if (-not (Test-Command hf)) {
+    throw @"
+Die 'hf'-CLI wurde nach der Installation nicht im PATH gefunden.
+
+Bitte öffne eine neue PowerShell und teste:
+  hf --help
+
+Alternativ installiere die CLI wie von Hugging Face empfohlen:
+  powershell -ExecutionPolicy ByPass -c "irm https://hf.co/cli/install.ps1 | iex"
+"@
+}
 
 if (-not $SkipLogin) {
-    Write-Host ""
-    Write-Host "Falls das Modell Authentifizierung braucht, bitte jetzt anmelden." -ForegroundColor Yellow
-    & $PythonCmd -m huggingface_hub.commands.huggingface_cli login
+    Write-Host "Starte Hugging-Face-Login ..." -ForegroundColor Yellow
+    & hf auth login
+    if ($LASTEXITCODE -ne 0) {
+        throw "hf auth login ist fehlgeschlagen."
+    }
 }
 
 New-Item -ItemType Directory -Force -Path $TargetDir | Out-Null
 
-Write-Host ""
 Write-Host "Lade GGUF-Datei ..." -ForegroundColor Cyan
 
-& $PythonCmd -m huggingface_hub.commands.huggingface_cli download `
+& hf download `
     $RepoId `
     ggml-model-i2_s.gguf `
     --repo-type model `
     --revision $Revision `
     --local-dir $TargetDir
+
+if ($LASTEXITCODE -ne 0) {
+    throw "hf download ist fehlgeschlagen."
+}
 
 $Expected = Join-Path $TargetDir "ggml-model-i2_s.gguf"
 if (-not (Test-Path $Expected)) {
