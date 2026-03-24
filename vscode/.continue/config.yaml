@@ -1,0 +1,12 @@
+name: C++ Assistant
+version: 0.0.1
+schema: v1
+
+models:
+  - name: Falcon3-3B-BitNet
+    provider: openai
+    model: Falcon3-3B-BitNet
+    apiBase: http://127.0.0.1:9090/v1
+    apiKey: local
+
+defaultModel: Falcon3-3B-BitNet
