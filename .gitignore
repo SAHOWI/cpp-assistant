@@ -1,2 +1,4 @@
-#ignore venv-podman
+#ignore venv-podman, models and workspace
 venv-podman/
+models/
+workspace/
