@@ -29,6 +29,8 @@ powershell -ExecutionPolicy Bypass -File .\download-model.ps1
    powershell -ExecutionPolicy Bypass -File .\run.ps1
 ``` 
 
+![execution of run.ps1](documentation\images\run.ps1.png)
+
 ## Progress
 [x] download model
 [x] build container 
