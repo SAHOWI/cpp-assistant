@@ -35,7 +35,7 @@ powershell -ExecutionPolicy Bypass -File .\download-model.ps1
 * [x] download model
 * [x] build container 
 * [x] run container
-* [-] connect to local VS Code
+* [] connect to local VS Code
 
 
 ## VS Code
