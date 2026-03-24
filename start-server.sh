@@ -5,7 +5,7 @@ MODEL_DIR="${MODEL_DIR:-/models/Falcon3-3B-Instruct-1.58bit}"
 QUANT_TYPE="${QUANT_TYPE:-i2_s}"
 HOST="${HOST:-0.0.0.0}"
 PORT="${PORT:-9090}"
-THREADS="${THREADS:-8}"
+THREADS="${THREADS:-4}"
 
 export CC="${CC:-clang}"
 export CXX="${CXX:-clang++}"

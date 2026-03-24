@@ -6,6 +6,14 @@ Experimental repository for self-study to evaluate possibilities to
 - provide C++ coding assistance
 - after installation & setup offline available (not data to be shared outside!!!)
 
+## Prerequesites
+[x] WSL2 installed (will be used by podman to allow linux pods)
+[x] Python 3.14 installed
+[x] podman / podman desktop installed (should also work with docker!)
+[x] podman-compose installed (python tool)
+
+
+
 ## High Level Steps
 
 1. Download model from huggingface (see): download-model.ps1
