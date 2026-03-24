@@ -2,7 +2,7 @@ param(
     [string]$BaseDir = (Get-Location).Path,
     [string]$ImageName = "cpp-assistant",
     [int]$Port = 9090,
-    [int]$Threads = 8,
+    [int]$Threads = 4,
     [string]$QuantType = "i2_s"
 )
 

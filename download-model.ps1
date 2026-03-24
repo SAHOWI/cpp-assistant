@@ -8,7 +8,7 @@ $ErrorActionPreference = "Stop"
 $Dir = Split-Path $TargetFile
 New-Item -ItemType Directory -Force -Path $Dir | Out-Null
 
-Write-Host "Starte Download..." -ForegroundColor Cyan
+Write-Host "Starting download..." -ForegroundColor Cyan
 Write-Host $Url
 
 # Fortschritt anzeigen
@@ -18,8 +18,8 @@ Invoke-WebRequest `
     -UseBasicParsing
 
 if (-not (Test-Path $TargetFile)) {
-    throw "Download fehlgeschlagen"
+    throw "Download failed"
 }
 
 Write-Host ""
-Write-Host "Download abgeschlossen: $TargetFile" -ForegroundColor Green
+Write-Host "Download finished: $TargetFile" -ForegroundColor Green
