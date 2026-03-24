@@ -15,6 +15,15 @@ Experimental repository for self-study to evaluate possibilities to
 
 
 ## High Level Steps
+For security reasons the execution policy should be enabled.
+You may check this by the following command within powershell:
+```powershell
+PS C:\data\ai\cpp-assistant> Get-ExecutionPolicy
+Restricted
+PS C:\data\ai\cpp-assistant>
+```
+But because of this you may have issues executing the scripts, therefore you must tell the powershell to bypass it.
+(if you trust me ;-) )
 
 1. Download model from huggingface (see): download-model.ps1
 ```powershell
